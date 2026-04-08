@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>确认删除</h3>
+<p>确定删除学生：{{ student.name }}（{{ student.student_id }}）吗？</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">确认删除</button>
+  <a href="{% url 'student_list' %}">取消</a>
+</form>
+{% endblock %}

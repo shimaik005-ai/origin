@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<p><a class="btn" href="{% url 'student_create' %}">+ 新增学生</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>学号</th>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>班级</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.student_id }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.age }}</td>
+      <td>{{ s.class_name }}</td>
+      <td>
+        <a href="{% url 'student_update' s.pk %}">编辑</a>
+        <a href="{% url 'student_delete' s.pk %}">删除</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">暂无数据</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
